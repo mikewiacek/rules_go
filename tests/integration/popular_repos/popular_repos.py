@@ -88,7 +88,6 @@ POPULAR_REPOS = [
             "cmd/bundle:bundle_test", # Needs testdata directory
             "cmd/callgraph/testdata/src/pkg:pkg_test", # is testdata
             "cmd/callgraph:callgraph_test", # Needs testdata directory
-            "cmd/cover:cover_test", # Needs testdata directory
             "cmd/file2fuzz:file2fuzz_test", # Requires working GOROOT, uses go build
             "cmd/fiximports:fiximports_test", # requires working GOROOT, not present in CI.
             "cmd/godoc:godoc_test", # TODO(#417)

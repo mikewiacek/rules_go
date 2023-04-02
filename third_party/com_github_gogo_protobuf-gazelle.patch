@@ -1628,43 +1628,6 @@ diff -urN a/sortkeys/BUILD.bazel b/sortkeys/BUILD.bazel
 +    actual = ":sortkeys",
 +    visibility = ["//visibility:public"],
 +)
-diff -urN a/test/asymetric-issue125/BUILD.bazel b/test/asymetric-issue125/BUILD.bazel
---- a/test/asymetric-issue125/BUILD.bazel	1970-01-01 00:00:00.000000000 +0000
-+++ b/test/asymetric-issue125/BUILD.bazel	2000-01-01 00:00:00.000000000 -0000
-@@ -0,0 +1,33 @@
-+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
-+
-+filegroup(
-+    name = "go_default_library_protos",
-+    srcs = ["asym.proto"],
-+    visibility = ["//visibility:public"],
-+)
-+
-+go_library(
-+    name = "asymetric-issue125",
-+    srcs = [
-+        "asym.pb.go",
-+        "pop.go",
-+    ],
-+    importpath = "github.com/gogo/protobuf/test/asymetric-issue125",
-+    visibility = ["//visibility:public"],
-+    deps = [
-+        "//gogoproto",
-+        "//proto",
-+    ],
-+)
-+
-+alias(
-+    name = "go_default_library",
-+    actual = ":asymetric-issue125",
-+    visibility = ["//visibility:public"],
-+)
-+
-+go_test(
-+    name = "asymetric-issue125_test",
-+    srcs = ["asym_test.go"],
-+    embed = [":asymetric-issue125"],
-+)
 diff -urN a/test/BUILD.bazel b/test/BUILD.bazel
 --- a/test/BUILD.bazel	1970-01-01 00:00:00.000000000 +0000
 +++ b/test/BUILD.bazel	2000-01-01 00:00:00.000000000 -0000
@@ -1716,6 +1679,43 @@ diff -urN a/test/BUILD.bazel b/test/BUILD.bazel
 +        "//jsonpb",
 +        "//proto",
 +    ],
++)
+diff -urN a/test/asymetric-issue125/BUILD.bazel b/test/asymetric-issue125/BUILD.bazel
+--- a/test/asymetric-issue125/BUILD.bazel	1970-01-01 00:00:00.000000000 +0000
++++ b/test/asymetric-issue125/BUILD.bazel	2000-01-01 00:00:00.000000000 -0000
+@@ -0,0 +1,33 @@
++load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
++
++filegroup(
++    name = "go_default_library_protos",
++    srcs = ["asym.proto"],
++    visibility = ["//visibility:public"],
++)
++
++go_library(
++    name = "asymetric-issue125",
++    srcs = [
++        "asym.pb.go",
++        "pop.go",
++    ],
++    importpath = "github.com/gogo/protobuf/test/asymetric-issue125",
++    visibility = ["//visibility:public"],
++    deps = [
++        "//gogoproto",
++        "//proto",
++    ],
++)
++
++alias(
++    name = "go_default_library",
++    actual = ":asymetric-issue125",
++    visibility = ["//visibility:public"],
++)
++
++go_test(
++    name = "asymetric-issue125_test",
++    srcs = ["asym_test.go"],
++    embed = [":asymetric-issue125"],
 +)
 diff -urN a/test/cachedsize/BUILD.bazel b/test/cachedsize/BUILD.bazel
 --- a/test/cachedsize/BUILD.bazel	1970-01-01 00:00:00.000000000 +0000
@@ -2294,6 +2294,24 @@ diff -urN a/test/custom/BUILD.bazel b/test/custom/BUILD.bazel
 +    srcs = ["custom_test.go"],
 +    embed = [":custom"],
 +)
+diff -urN a/test/custom-dash-type/BUILD.bazel b/test/custom-dash-type/BUILD.bazel
+--- a/test/custom-dash-type/BUILD.bazel	1970-01-01 00:00:00.000000000 +0000
++++ b/test/custom-dash-type/BUILD.bazel	2000-01-01 00:00:00.000000000 -0000
+@@ -0,0 +1,14 @@
++load("@io_bazel_rules_go//go:def.bzl", "go_library")
++
++go_library(
++    name = "custom-dash-type",
++    srcs = ["customdash.go"],
++    importpath = "github.com/gogo/protobuf/test/custom-dash-type",
++    visibility = ["//visibility:public"],
++)
++
++alias(
++    name = "go_default_library",
++    actual = ":custom-dash-type",
++    visibility = ["//visibility:public"],
++)
 diff -urN a/test/custombytesnonstruct/BUILD.bazel b/test/custombytesnonstruct/BUILD.bazel
 --- a/test/custombytesnonstruct/BUILD.bazel	1970-01-01 00:00:00.000000000 +0000
 +++ b/test/custombytesnonstruct/BUILD.bazel	2000-01-01 00:00:00.000000000 -0000
@@ -2330,24 +2348,6 @@ diff -urN a/test/custombytesnonstruct/BUILD.bazel b/test/custombytesnonstruct/BU
 +    name = "custombytesnonstruct_test",
 +    srcs = ["custombytesnonstruct_test.go"],
 +    embed = [":custombytesnonstruct"],
-+)
-diff -urN a/test/custom-dash-type/BUILD.bazel b/test/custom-dash-type/BUILD.bazel
---- a/test/custom-dash-type/BUILD.bazel	1970-01-01 00:00:00.000000000 +0000
-+++ b/test/custom-dash-type/BUILD.bazel	2000-01-01 00:00:00.000000000 -0000
-@@ -0,0 +1,14 @@
-+load("@io_bazel_rules_go//go:def.bzl", "go_library")
-+
-+go_library(
-+    name = "custom-dash-type",
-+    srcs = ["customdash.go"],
-+    importpath = "github.com/gogo/protobuf/test/custom-dash-type",
-+    visibility = ["//visibility:public"],
-+)
-+
-+alias(
-+    name = "go_default_library",
-+    actual = ":custom-dash-type",
-+    visibility = ["//visibility:public"],
 +)
 diff -urN a/test/dashfilename/BUILD.bazel b/test/dashfilename/BUILD.bazel
 --- a/test/dashfilename/BUILD.bazel	1970-01-01 00:00:00.000000000 +0000
@@ -3408,27 +3408,6 @@ diff -urN a/test/issue262/BUILD.bazel b/test/issue262/BUILD.bazel
 +    actual = ":issue262",
 +    visibility = ["//visibility:public"],
 +)
-diff -urN a/test/issue270/a/BUILD.bazel b/test/issue270/a/BUILD.bazel
---- a/test/issue270/a/BUILD.bazel	1970-01-01 00:00:00.000000000 +0000
-+++ b/test/issue270/a/BUILD.bazel	2000-01-01 00:00:00.000000000 -0000
-@@ -0,0 +1,8 @@
-+filegroup(
-+    name = "go_default_library_protos",
-+    srcs = [
-+        "a1.proto",
-+        "a2.proto",
-+    ],
-+    visibility = ["//visibility:public"],
-+)
-diff -urN a/test/issue270/b/BUILD.bazel b/test/issue270/b/BUILD.bazel
---- a/test/issue270/b/BUILD.bazel	1970-01-01 00:00:00.000000000 +0000
-+++ b/test/issue270/b/BUILD.bazel	2000-01-01 00:00:00.000000000 -0000
-@@ -0,0 +1,5 @@
-+filegroup(
-+    name = "go_default_library_protos",
-+    srcs = ["b.proto"],
-+    visibility = ["//visibility:public"],
-+)
 diff -urN a/test/issue270/BUILD.bazel b/test/issue270/BUILD.bazel
 --- a/test/issue270/BUILD.bazel	1970-01-01 00:00:00.000000000 +0000
 +++ b/test/issue270/BUILD.bazel	2000-01-01 00:00:00.000000000 -0000
@@ -3452,6 +3431,27 @@ diff -urN a/test/issue270/BUILD.bazel b/test/issue270/BUILD.bazel
 +    name = "issue270_test",
 +    srcs = ["issue270_test.go"],
 +    embed = [":issue270"],
++)
+diff -urN a/test/issue270/a/BUILD.bazel b/test/issue270/a/BUILD.bazel
+--- a/test/issue270/a/BUILD.bazel	1970-01-01 00:00:00.000000000 +0000
++++ b/test/issue270/a/BUILD.bazel	2000-01-01 00:00:00.000000000 -0000
+@@ -0,0 +1,8 @@
++filegroup(
++    name = "go_default_library_protos",
++    srcs = [
++        "a1.proto",
++        "a2.proto",
++    ],
++    visibility = ["//visibility:public"],
++)
+diff -urN a/test/issue270/b/BUILD.bazel b/test/issue270/b/BUILD.bazel
+--- a/test/issue270/b/BUILD.bazel	1970-01-01 00:00:00.000000000 +0000
++++ b/test/issue270/b/BUILD.bazel	2000-01-01 00:00:00.000000000 -0000
+@@ -0,0 +1,5 @@
++filegroup(
++    name = "go_default_library_protos",
++    srcs = ["b.proto"],
++    visibility = ["//visibility:public"],
 +)
 diff -urN a/test/issue312/BUILD.bazel b/test/issue312/BUILD.bazel
 --- a/test/issue312/BUILD.bazel	1970-01-01 00:00:00.000000000 +0000

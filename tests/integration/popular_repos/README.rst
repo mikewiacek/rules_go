@@ -99,6 +99,7 @@ This runs tests from the repository `golang.org/x/sys <https://golang.org/x/sys>
 * @org_golang_x_sys//internal/unsafeheader:unsafeheader_test
 * @org_golang_x_sys//plan9:plan9_test
 * @org_golang_x_sys//unix/internal/mkmerge:mkmerge_test
+* @org_golang_x_sys//windows/mkwinsyscall:mkwinsyscall_test
 * @org_golang_x_sys//windows/registry:registry_test
 * @org_golang_x_sys//windows/svc:svc_test
 * @org_golang_x_sys//windows/svc/eventlog:eventlog_test
@@ -163,8 +164,11 @@ This runs tests from the repository `golang.org/x/tools <https://golang.org/x/to
 * @org_golang_x_tools//cmd/splitdwarf/internal/macho:macho_test
 * @org_golang_x_tools//cover:cover_test
 * @org_golang_x_tools//go/analysis:analysis_test
+* @org_golang_x_tools//go/analysis/passes/directive:directive_test
+* @org_golang_x_tools//go/analysis/passes/directive/testdata/src/a:a_test
 * @org_golang_x_tools//go/analysis/passes/internal/analysisutil:analysisutil_test
 * @org_golang_x_tools//go/ast/astutil:astutil_test
+* @org_golang_x_tools//go/callgraph:callgraph_test
 * @org_golang_x_tools//go/callgraph/static:static_test
 * @org_golang_x_tools//go/callgraph/vta/internal/trie:trie_test
 * @org_golang_x_tools//go/cfg:cfg_test
@@ -188,6 +192,8 @@ This runs tests from the repository `golang.org/x/tools <https://golang.org/x/to
 * @org_golang_x_tools//internal/jsonrpc2:jsonrpc2_test
 * @org_golang_x_tools//internal/jsonrpc2/servertest:servertest_test
 * @org_golang_x_tools//internal/jsonrpc2_v2:jsonrpc2_v2_test
+* @org_golang_x_tools//internal/lockedfile:lockedfile_test
+* @org_golang_x_tools//internal/lockedfile/internal/filelock:filelock_test
 * @org_golang_x_tools//internal/memoize:memoize_test
 * @org_golang_x_tools//internal/persistent:persistent_test
 * @org_golang_x_tools//internal/proxydir:proxydir_test
